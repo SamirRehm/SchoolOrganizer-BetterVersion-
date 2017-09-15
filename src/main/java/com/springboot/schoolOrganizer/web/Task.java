@@ -5,6 +5,7 @@
  */
 package com.springboot.schoolOrganizer.web;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +17,7 @@ import org.joda.time.DateTime;
  * @author Samir Rehmtulla
  */
 
-public class Task {
+public class Task implements Serializable {
     private DateTime dateTimeAtCreation;
     private DateTime dateTimeWhenStarted;
     private long activeWorkTime;

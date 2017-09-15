@@ -5,6 +5,7 @@
  */
 package com.springboot.schoolOrganizer.web;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author Samir Rehmtulla
  */
-public class Status {
+public class Status implements Serializable {
     private String name;
     private List<Task> tasks;
     
@@ -35,5 +36,11 @@ public class Status {
     
     public String getName() {
         return this.name;
+    }
+    
+    public void addTask(Task task) {
+        this.tasks.add(task);
+        System.out.println("HOLA" + this.getTasks().get(0).getName());
+        System.out.println("YOU ADDED THE TASK");
     }
 }

@@ -68,6 +68,36 @@
          opacity: 1;
          right: 0;
          }
+         #mainselection select {
+         border: 0;
+         color: #EEE;
+         background: transparent;
+         font-size: 20px;
+         font-weight: bold;
+         padding: 2px 10px;
+         width: 170px;
+         *width: 158px;
+         *background: #58B14C;
+         -webkit-appearance: none;
+         }
+         #mainselection {
+         overflow:hidden;
+         width:170px;
+         -moz-border-radius: 9px 9px 9px 9px;
+         -webkit-border-radius: 9px 9px 9px 9px;
+         border-radius: 9px 9px 9px 9px;
+         box-shadow: 1px 1px 11px #330033;
+         background: #58B14C url("http://i62.tinypic.com/15xvbd5.png") no-repeat scroll 319px center;
+         }
+         #priority1 {
+             background-color: rgba(255,0,0,0.3);
+         }
+         #priority2 {
+             background-color: rgba(0,255,0,0.3);
+         }
+         #priority3 {
+             background-color: rgba(0,0,255,0.3);
+         }
       </style>
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -85,7 +115,7 @@
             <ul id="sortable1" class="connectedSortable">
                <li class="ui-state-default">${item.getName()}</li>
                <c:forEach items="${item.getTasks()}" var="task">
-                  <li class="ui-state-default">${task.getName()} <br> P${task.getPriority()} <br> ${task.getTimeSinceCreationString()}</li>
+                  <li style=" " id="priority${task.getPriority()}" class="ui-state-default">${task.getName()} <br> P${task.getPriority()} <br> ${task.getTimeSinceCreationString()}</li>
                </c:forEach>
             </ul>
          </c:forEach>
@@ -111,6 +141,7 @@
                </div>
             </div>
       </div>
+      </form>
       <div style="width: 170px; float: left">
          <form action="/moveTask">
             <div style="width: 170px; float: left">
@@ -122,6 +153,35 @@
             </div>
       </div>
       </form>
+      <div style="width: 170px; float: left">
+         <form action="/removeTask">
+            <div style="width: 170px; float: left">
+               Task name: <input type ="text" name="taskName"><br>
+               <div id="button" style="text-align: center; margin: auto; float: left">
+                  <button class="button" style="width: 137px; background-color: red; opacity: 0.5; font-weight: bold"><span> Remove Task </span></button>
+               </div>
+            </div>
+      </div>
       </form>
+      <div style="width: 170px; float: left">
+         <div style="width: 170px; float: left">
+            <form action="/clearStatus">
+                     <label>Status Name</label>
+                  <div id ="mainselection">
+                      <select id = "myList" name="statusName">
+                        <c:forEach items="${Statuses}" var="item">
+                        <option value = "${item.getName()}">${item.getName()}</option>
+                        </c:forEach>
+                     </select>
+                  </div>
+               <div id="button" style="text-align: center; margin: auto; float: left">
+                  <button class="button" style="width: 137px; background-color: red; opacity: 0.5; font-weight: bold"><span> Clear Status </span></button>
+               </div>
+         </div>
+      </div>
+      </form>
+             <div>
+                <a href="http://localhost:8080/load"> Load </a> </button>
+             </div>
    </body>
 </html>
